@@ -11,13 +11,17 @@ public class CollisionHandler : MonoBehaviour
 
   AudioSource audioSource;
 
+  bool detectedHit = false;
+
   void Start()
   {
-      audioSource = GetComponent<AudioSource>();
+    audioSource = GetComponent<AudioSource>();
   }
 
   void OnCollisionEnter(Collision other)
   {
+    if (detectedHit) { return; }
+
     switch (other.gameObject.tag)
     {
       case "Friendly":
@@ -40,6 +44,8 @@ public class CollisionHandler : MonoBehaviour
 
   void Crash()
   {
+    detectedHit = true;
+    audioSource.Stop();
     audioSource.PlayOneShot(crashSound);
     GetComponent<Movement>().enabled = false;
     Invoke("ReloadLevel", loadLevelDelay);
@@ -47,6 +53,8 @@ public class CollisionHandler : MonoBehaviour
 
   void FinishLevel()
   {
+    detectedHit = true;
+    audioSource.Stop();
     audioSource.PlayOneShot(finishSound);
     GetComponent<Movement>().enabled = false;
     Invoke("NextLevel", loadLevelDelay);
