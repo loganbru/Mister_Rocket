@@ -20,7 +20,7 @@ public class Movement : MonoBehaviour
 
   void ProcessThrust()
   {
-    if (Input.GetKey(KeyCode.Space))
+    if (Input.GetKey(KeyCode.W))
     {
       rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
     }
