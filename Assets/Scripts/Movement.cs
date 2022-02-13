@@ -39,6 +39,8 @@ public class Movement : MonoBehaviour
 
   void RotateRocket(float rotationDirection)
   {
+    rb.freezeRotation = true; // freezing rotation so we can manually rotate
     transform.Rotate(Vector3.forward * rotationDirection * Time.deltaTime);
+    rb.freezeRotation = false; // unfreeze physics rotation
   }
 }
