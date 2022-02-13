@@ -4,11 +4,15 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour
 {
-  Rigidbody rb;
-  AudioSource audioSource;
   [SerializeField] float thrusterForce = 1000f;
   [SerializeField] float rotationForce = 100f;
   [SerializeField] AudioClip ThrusterSound;
+  [SerializeField] ParticleSystem mainThrusterParticles;
+  [SerializeField] ParticleSystem leftThrusterParticles;
+  [SerializeField] ParticleSystem rightThrusterParticles;
+
+  Rigidbody rb;
+  AudioSource audioSource;
 
   void Start()
   {
@@ -31,10 +35,15 @@ public class Movement : MonoBehaviour
       {
         audioSource.PlayOneShot(ThrusterSound);
       }
+      if (!mainThrusterParticles.isPlaying)
+      {
+        mainThrusterParticles.Play();
+      }
     }
     else
     {
       audioSource.Stop();
+      mainThrusterParticles.Stop();
     }
 
   }
@@ -43,10 +52,23 @@ public class Movement : MonoBehaviour
     if (Input.GetKey(KeyCode.A))
     {
       RotateRocket(rotationForce);
+      if (!leftThrusterParticles.isPlaying)
+      {
+        leftThrusterParticles.Play();
+      }
     }
     else if (Input.GetKey(KeyCode.D))
     {
       RotateRocket(-rotationForce);
+      if (!rightThrusterParticles.isPlaying)
+      {
+        rightThrusterParticles.Play();
+      }
+    }
+    else
+    {
+      rightThrusterParticles.Stop();
+      leftThrusterParticles.Stop();
     }
   }
 
