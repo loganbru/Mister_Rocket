@@ -5,7 +5,8 @@ using UnityEngine;
 public class Movement : MonoBehaviour
 {
   Rigidbody rb;
-  [SerializeField] float thrusterForce = 1f;
+  [SerializeField] float thrusterForce = 1000f;
+  [SerializeField] float rotationForce = 100f;
   void Start()
   {
     rb = GetComponent<Rigidbody>();
@@ -21,18 +22,23 @@ public class Movement : MonoBehaviour
   {
     if (Input.GetKey(KeyCode.Space))
     {
-        rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
+      rb.AddRelativeForce(Vector3.up * thrusterForce * Time.deltaTime);
     }
   }
   void ProcessRotation()
   {
     if (Input.GetKey(KeyCode.A))
     {
-      Debug.Log("Pressed A - ROTATE LEFT");
+      RotateRocket(rotationForce);
     }
     else if (Input.GetKey(KeyCode.D))
     {
-      Debug.Log("Pressed D - ROTATE RIGHT");
+      RotateRocket(-rotationForce);
     }
+  }
+
+  void RotateRocket(float rotationDirection)
+  {
+    transform.Rotate(Vector3.forward * rotationDirection * Time.deltaTime);
   }
 }
