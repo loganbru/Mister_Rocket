@@ -342,10 +342,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1184970345404494292, guid: bb2214bc5657837499a0d304458e4dba, type: 3}
+      propertyPath: ThrusterSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5acecb3fdcfc78c4690fce53916bb928, type: 3}
     - target: {fileID: 6101196598751165834, guid: bb2214bc5657837499a0d304458e4dba, type: 3}
       propertyPath: m_Name
       value: Rocket
       objectReference: {fileID: 0}
+    - target: {fileID: 7729651779560295042, guid: bb2214bc5657837499a0d304458e4dba, type: 3}
+      propertyPath: crashSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 5023d68dfe4acec46b7035cfdff8f8ec, type: 3}
+    - target: {fileID: 7729651779560295042, guid: bb2214bc5657837499a0d304458e4dba, type: 3}
+      propertyPath: finishSound
+      value: 
+      objectReference: {fileID: 8300000, guid: c022f2dc3db0e3542877bcb762658047, type: 3}
     - target: {fileID: 9064013544196651354, guid: bb2214bc5657837499a0d304458e4dba, type: 3}
       propertyPath: m_RootOrder
       value: 1

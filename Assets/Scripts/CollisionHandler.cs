@@ -6,6 +6,16 @@ using UnityEngine.SceneManagement;
 public class CollisionHandler : MonoBehaviour
 {
   [SerializeField] float loadLevelDelay = 2f;
+  [SerializeField] AudioClip crashSound;
+  [SerializeField] AudioClip finishSound;
+
+  AudioSource audioSource;
+
+  void Start()
+  {
+      audioSource = GetComponent<AudioSource>();
+  }
+
   void OnCollisionEnter(Collision other)
   {
     switch (other.gameObject.tag)
@@ -30,12 +40,14 @@ public class CollisionHandler : MonoBehaviour
 
   void Crash()
   {
+    audioSource.PlayOneShot(crashSound);
     GetComponent<Movement>().enabled = false;
     Invoke("ReloadLevel", loadLevelDelay);
   }
 
   void FinishLevel()
   {
+    audioSource.PlayOneShot(finishSound);
     GetComponent<Movement>().enabled = false;
     Invoke("NextLevel", loadLevelDelay);
   }
