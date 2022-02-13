@@ -362,8 +362,8 @@ MonoBehaviour:
   rotationForce: 100
   ThrusterSound: {fileID: 8300000, guid: 5acecb3fdcfc78c4690fce53916bb928, type: 3}
   mainThrusterParticles: {fileID: 1440220151756261078}
-  leftThrusterParticles: {fileID: 7554008368085688988}
-  rightThrusterParticles: {fileID: 7196191505099278267}
+  leftThrusterParticles: {fileID: 7196191505099278267}
+  rightThrusterParticles: {fileID: 7554008368085688988}
 --- !u!65 &2009302573493060440
 BoxCollider:
   m_ObjectHideFlags: 0
